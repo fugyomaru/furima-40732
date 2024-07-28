@@ -13,7 +13,7 @@
 | first_name_kanji           | string     | null: false |
 | family_name_kana           | string     | null: false |
 | first_name_kana            | string     | null: false |
-| birthday                   | integer    | null: false |
+| birthday                   | date       | null: false |
 
 ### Association
 - has_many :items
@@ -25,11 +25,11 @@
 | ------------ | ----------- | ----------- |
 | item_name    | string      | null: false |
 | item_text    | text        | null: false |
-| category     | string      | null: false |
-| condition    | string      | null: false |
-| charges      | string      | null: false |
-| area         | string      | null: false |
-| days         | string      | null: false |
+| category_id  | integer     | null: false |
+| condition_id | integer     | null: false |
+| charges_id   | integer     | null: false |
+| area_id      | integer     | null: false |
+| days_id      | integer     | null: false |
 | price        | integer     | null: false |
 | user_id      | references  | null: false, foreign_key: true |
 
@@ -55,12 +55,12 @@
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| postal_code    | integer    | null: false |
-| todoufukenn    | string     | null: false |
+| postal_code    | string     | null: false |
+| todoufukenn_id | integer    | null: false |
 | city           | string     | null: false |
 | street_address | string     | null: false |
 | building_name  | string     | 
-| phone_number   | integer    | null: false |
+| phone_number   | string     | null: false |
 | order_id       | references | null: false, foreign_key: true |
 
 ### Association
