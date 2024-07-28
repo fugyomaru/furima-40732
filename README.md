@@ -27,11 +27,11 @@
 | item_text    | text        | null: false |
 | category_id  | integer     | null: false |
 | condition_id | integer     | null: false |
-| charges_id   | integer     | null: false |
+| charge_id    | integer     | null: false |
 | area_id      | integer     | null: false |
-| days_id      | integer     | null: false |
+| day_id       | integer     | null: false |
 | price        | integer     | null: false |
-| user_id      | references  | null: false, foreign_key: true |
+| user         | references  | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -42,8 +42,8 @@
 
 | Column         | Type        | Options                        |
 | -------------- | ----------- | ------------------------------ |
-| user_id        | references  | null: false, foreign_key: true |
-| item_id        | references  | null: false, foreign_key: true |
+| user           | references  | null: false, foreign_key: true |
+| item           | references  | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :item
@@ -61,7 +61,7 @@
 | street_address | string     | null: false |
 | building_name  | string     | 
 | phone_number   | string     | null: false |
-| order_id       | references | null: false, foreign_key: true |
+| order          | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :order
