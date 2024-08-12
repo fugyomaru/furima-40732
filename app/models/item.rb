@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   belongs_to :condition
   belongs_to :charge
   belongs_to :area
+  belongs_to :day
   validates :item_name, presence: true
   validates :item_text, presence: true
   validates :category_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
