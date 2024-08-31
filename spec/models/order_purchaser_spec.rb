@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe OrderPurchaser, type: :model do
   before do
-    user = FactoryBot.create(:user)
-    item = FactoryBot.create(:item)
-    @order_purchaser = FactoryBot.build(:order_purchaser, user_id: user.id, item_id: item.id)
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item, user: @user)
+    @order_purchaser = FactoryBot.build(:order_purchaser, user_id: @user.id, item_id: @item.id)
   end
 
   describe '購入情報の保存' do
@@ -87,9 +87,9 @@ RSpec.describe OrderPurchaser, type: :model do
       end
 
       it 'tokenが空では登録できないこと' do
-        @order.token = nil
-        @order.valid?
-        expect(@order.errors.full_messages).to include("Token can't be blank")
+        @order_purchaser.token = nil
+        @order_purchaser.valid?
+        expect(@order_purchaser.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
