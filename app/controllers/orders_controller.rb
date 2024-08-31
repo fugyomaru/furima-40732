@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item
+  before_action :redirect_if_invalid_access, only: [:index, :create]
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @order_purchaser = OrderPurchaser.new
@@ -37,5 +38,13 @@ class OrdersController < ApplicationController
       card: order_purchaser_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def redirect_if_invalid_access
+    if @item.order.present? && @item.user != current_user
+      redirect_to root_path
+    elsif @item.user == current_user
+      redirect_to root_path
+    end
   end
 end
